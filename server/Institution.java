@@ -5,7 +5,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
 
     public Institution() throws RemoteException{};
 
-    public Employe add(String nom, String prenom , double cin , double telephone) throws RemoteException{
+    public Employe add(String nom, String prenom , int cin , int telephone) throws RemoteException{
 
         // Traiter Les Fichiers
         return new Employe(nom, prenom, cin, telephone);

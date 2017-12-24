@@ -5,10 +5,10 @@ public class Employe implements Remote, Serializable{
 
     String nom;
     String prenom;
-    double cin;
-    double telephone;
+    int cin;
+    int telephone;
 
-    Employe(String nom, String prenom, double cin, double telephone) throws RemoteException{
+    Employe(String nom, String prenom, int cin, int telephone) throws RemoteException{
         this.nom = nom;
         this.prenom = prenom;
         this.cin = cin;

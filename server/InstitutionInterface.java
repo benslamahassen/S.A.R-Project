@@ -1,5 +1,5 @@
 import java.rmi.*;
 
 public interface InstitutionInterface extends Remote {
-    Employe add(String nom, String prenom, double cin, double telephone) throws RemoteException;
+    Employe add(String nom, String prenom, int cin, int telephone) throws RemoteException;
 }
