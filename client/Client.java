@@ -10,13 +10,12 @@ public class Client {
             FabriqueInterface fab = (FabriqueInterface) reg.lookup("Fabrique");
             //Création d'institution
             InstitutionInterface institution = (InstitutionInterface) fab.createInstitution();
-            //Récupération de l'objet Employe
-            Employe employe = institution.add("salah", "ali", 01234567, 93116960);
+            //Création de l'Employe
+            Employe employe = new Employe("salah", "ali", 01234567, 93116960);
+            //Invocation de la méthode Add
+            institution.add(employe);
             //Affichage
-            System.out.println("Nom: " + employe.nom);
-            System.out.println("Prenom: " + employe.prenom);
-            System.out.println("CIN: " + employe.cin);
-            System.out.println("Telephone: " + employe.telephone);
+
 
         } catch (Exception e) {
 
