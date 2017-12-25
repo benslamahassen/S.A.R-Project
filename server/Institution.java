@@ -21,9 +21,11 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
             System.out.println("Fichiers Inexistants");
             System.out.println(e.toString());
         }
-        //Lecture des objets Json
+        //Lecture de fichier
         JsonReader lecteurJson = createReader(in);
+        //Lecture de l'objet Json globale
         JsonObject lecteurJsonObjectGlobale = lecteurJson.readObject();
+        //Lecture du tableau d'objet Employes
         JsonArray lecteurTableauEmployes = lecteurJsonObjectGlobale.getJsonArray(employes);
         lecteurJson.close();
 
