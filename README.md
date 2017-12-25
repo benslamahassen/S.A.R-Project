@@ -6,13 +6,13 @@ Serveur
 //Aller dans le repertoire server//
   user$ cd server
 //Complier les fichiers .java//
-  user$ javac *.java
+  user$ javac -classpath ../lib/.javax.json.jar:./ *.java
 //Générer les souches client et serveur Institution_Stub.class et Institution_Skel.class//
   user$ rmic -v1.1 Institution
 //Générer les souches//
   user$ rmic -v1.1 Fabrique
 //Lancer le serveur d'objets//
-  user$ java Server
+  user$ java -classpath ../lib/.javax.json.jar:./ Server
 ```
 Client
 ```
@@ -26,10 +26,8 @@ Client
   user$ cp ../server/FabriqueInterface.class .
 // Copier le stub Fabrique_Stub.class//
   user$ cp ../server/Fabrique_Stub.class .
-// Copier la classe Employe//
-  user$ cp ../server/Employe.class .
 //Compiler le client Client.java//
-  user$ javac Client.java
+  user$ javac -classpath ../lib/.javax.json.jar:./ *.java
 //Lancer le client//
-  user$ java Client
+  user$ java -classpath ../lib/.javax.json.jar:./ Client
 ```
