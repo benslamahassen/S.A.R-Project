@@ -1,5 +1,5 @@
 {
-  "nomInstitution" : "FST",
+  "institutionName": "FST",
   "employes": [
     {
       "cin": 1234567890,
@@ -19,5 +19,5 @@
       "prenom": "Ali",
       "telephone": 123456789000
     }
-    ]
+  ]
 }
