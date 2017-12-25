@@ -15,35 +15,24 @@ public class Employe implements Remote, Serializable{
         this.telephone = telephone;
     }
 
-    /**
-     * @return the nom
-     */
-    public String getNom() {
+    public String getNom() throws RemoteException{
         return nom;
     }
 
-    /**
-     * @return the prenom
-     */
-    public String getPrenom() {
+    public String getPrenom() throws RemoteException{
         return prenom;
     }
 
-    /**
-     * @return the cin
-     */
-    public int getCin() {
+    public int getCin() throws RemoteException{
         return cin;
     }
-    /**
-     * @return the telephone
-     */
-    public int getTelephone() {
+
+    public int getTelephone() throws RemoteException{
         return telephone;
     }
 
     @Override
-    public String toString() {
+    public String toString() throws RemoteException{
         return "Nom :" + this.nom + "\nPrenom :" + this.prenom + "\nCin :" + this.cin + "\nTélèphone :" + this.telephone;
     }
 }
