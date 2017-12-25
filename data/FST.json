@@ -1,0 +1,23 @@
+{
+  "nomInstitution" : "FST",
+  "employes": [
+    {
+      "cin": 1234567890,
+      "nom": "Aymen",
+      "prenom": "Chebbi",
+      "telephone": 123456789000
+    },
+    {
+      "cin": 9874561230,
+      "nom": "Mohamed",
+      "prenom": "Sadok",
+      "telephone": 123456789000
+    },
+    {
+      "cin": 2031469587,
+      "nom": "Manel",
+      "prenom": "Ali",
+      "telephone": 123456789000
+    }
+    ]
+}

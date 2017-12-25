@@ -15,7 +15,7 @@ public class Client {
             //Invocation de la méthode Add
             String resultat = institution.add(employe);
             //Affichage
-            System.out.println("Succée de l'ajout : " + resultat);
+            System.out.println("Succée de l'ajout : \n" + resultat);
 
         } catch (Exception e) {
 
