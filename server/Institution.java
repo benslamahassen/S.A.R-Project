@@ -23,10 +23,10 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         }
         //Lecture de fichier
         JsonReader lecteurJson = createReader(in);
-        //Lecture de l'objet Json globale
-        JsonObject lecteurJsonObjectGlobale = lecteurJson.readObject();
+        //Lecture de l'objet Institution
+        JsonObject lecteurObjetInstituion = lecteurJson.readObject();
         //Lecture du tableau d'objet Employes
-        JsonArray lecteurTableauEmployes = lecteurJsonObjectGlobale.getJsonArray(employes);
+        JsonArray lecteurTableauEmployes = lecteurObjetInstituion.getJsonArray(employes);
         lecteurJson.close();
 
         //Préparation d'écriture des données
@@ -45,12 +45,12 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         //Préparation de la tableau d'objets Employe
         JsonArray nouveauTableauEmployes = nouveauTableauEmployesBuilder.build();
         //Création de l'objet globale de document Json
-        JsonObjectBuilder JsonObjetGlobaleBuilder = Json.createObjectBuilder();
-        //Ajout des données à l'objet globale
-        JsonObjetGlobaleBuilder.add("institutionName", "FST");
-        JsonObjetGlobaleBuilder.add("employes", nouveauTableauEmployes);
-        //Préparation de l'objet globale Json
-        JsonObject JsonObjetGlobale = JsonObjetGlobaleBuilder.build();
+        JsonObjectBuilder nouveauObjetInstitionBuilder = Json.createObjectBuilder();
+        //Ajout des données à l'objet Institution
+        nouveauObjetInstitionBuilder.add("institutionName", "FST");
+        nouveauObjetInstitionBuilder.add("employes", nouveauTableauEmployes);
+        //Préparation de l'objet Institution
+        JsonObject nouveauObjetInstituion = nouveauObjetInstitionBuilder.build();
 
         //Ecriture des données
         //Création de Output Stream
@@ -62,7 +62,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         }
         //Ecriture de l'objet globale Json déja préparé
         JsonWriter ecrivainJson = Json.createWriter(out);
-        ecrivainJson.writeObject(emp01);
+        ecrivainJson.writeObject(nouveauObjetInstituion);
         ecrivainJson.close();
 
         return "\nNom :" + emp.getNom() + 
