@@ -30,9 +30,4 @@ public class Employe implements Remote, Serializable{
     public int getTelephone() throws RemoteException{
         return telephone;
     }
-
-    @Override
-    public String toString() throws RemoteException{
-        return "Nom :" + this.nom + "\nPrenom :" + this.prenom + "\nCin :" + this.cin + "\nTélèphone :" + this.telephone;
-    }
 }

@@ -8,6 +8,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
     public String add(Employe emp) throws RemoteException{
 
         // Traiter Les Fichiers
-        return emp.toString();
+        return "Nom :" + emp.getNom() + "\nPrenom :" + emp.getPrenom() + "\nCin :" + emp.getCin() + "\nTélèphone :" + emp.getTelephone();
+
     }
 }
