@@ -13,9 +13,9 @@ public class Client {
             //Création de l'Employe
             Employe employe = new Employe("salah", "ali", 01234567, 93116960);
             //Invocation de la méthode Add
-            String res = institution.add(employe);
+            String resultat = institution.add(employe);
             //Affichage
-            System.out.println("Succée de l'ajout :" + res);
+            System.out.println("Succée de l'ajout : " + resultat);
 
         } catch (Exception e) {
 
