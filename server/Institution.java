@@ -60,7 +60,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
             System.out.println("Fichiers Inexistants");
             System.out.println(e.toString());
         }
-        //Ecriture de l'objet globale Json déja préparé
+        //Ecriture de l'objet Instituion déja préparé
         JsonWriter ecrivainJson = Json.createWriter(out);
         ecrivainJson.writeObject(nouveauObjetInstituion);
         ecrivainJson.close();
