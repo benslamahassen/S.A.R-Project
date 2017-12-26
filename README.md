@@ -1,33 +1,39 @@
 # S.A.R-Project
 Java RMI Academic Project.
+Dependances : Apache
 ## Using The Project
-Serveur
+Apache
 ```
-//Aller dans le repertoire server//
-    user$ cd server
+sudo apt install apache2
+```
+CodeBase
+```
+//Aller dans le repertoire CodeBase//
+    user$ cd CodeBase
 //Complier les fichiers .java//
     user$ javac -classpath ../lib/javax.json.jar:./ *.java
 //Générer les souches client et serveur Institution_Stub.class et Institution_Skel.class//
     user$ rmic -v1.1 Institution
 //Générer les souches//
     user$ rmic -v1.1 Fabrique
-//Lancer le serveur d'objets//
-    user$ java -classpath ../lib/javax.json.jar:./ Server
+//Copier le Dossier CodeBase vers /var/www/html pour étre accessible depuis http avec apache
+    user$ cp -r CodeBase/ /var/www/html
+```
+Serveur
+```
+//Aller dans le repertoire Server//
+    user$ cd Server
+//Complier les fichiers .java//
+    user$ javac -classpath ../lib/javax.json.jar:./ *.java
+//Lancer le serveur dynamique//
+    user$ java -Djava.security.policy=server.security.policy -Djava.rmi.server.codebase=http://localhost/CodeBase/  -classpath ../lib/javax.json.jar:./ ServeurDynamique
 ```
 Client
 ```
 //Aller dans le répertoire du client//
     user$ cd ../client
-//Copier l'interface InstitutionInterface.class dans le répertoire du client//
-    user$ cp ../server/InstitutionInterface.class .
-//Copier le stub client Institution_Stub.class dans le répertoire du client//
-    user$ cp ../server/Institution_Stub.class .
-//Copier l’interface FabriqueInterface.class//
-    user$ cp ../server/FabriqueInterface.class .
-//Copier le stub Fabrique_Stub.class//
-    user$ cp ../server/Fabrique_Stub.class .
-//Compiler le client Client.java//
+//Compiler les fichiers .java//
     user$ javac -classpath ../lib/javax.json.jar:./ *.java
-//Lancer le client//
-    user$ java -classpath ../lib/javax.json.jar:./ Client
+//Lancer le client dynamique//
+    user$ java -Djava.security.policy=client.security.policy -Djava.rmi.server.codebase=http://localhost/CodeBase/  -classpath ../lib/javax.json.jar:./ ClientDynamique
 ```
