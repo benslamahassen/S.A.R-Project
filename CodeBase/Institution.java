@@ -5,14 +5,14 @@ import javax.json.*;
 import java.io.*;
 
 public class Institution extends UnicastRemoteObject implements InstitutionInterface{
-    
+
     public Institution() throws RemoteException{
         super();
     };
-    
+
     public String add(Employe emp, String nomInstitution) throws RemoteException{
         //Traitement des Fichiers
-        
+
         //Lecture des données
         //Création de Input Stream
         InputStream in = null;
@@ -29,7 +29,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         //Lecture du tableau d'objet Employes
         JsonArray lecteurTableauEmployes = lecteurObjetInstituion.getJsonArray("employes");
         lecteurJson.close();
-        
+
         //Préparation d'écriture des données
         JsonArrayBuilder nouveauTableauEmployesBuilder = Json.createArrayBuilder();
         for (int i = 0; i < lecteurTableauEmployes.size(); i++) {
@@ -41,7 +41,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         nouveauEmploye.add("nom",emp.getNom());
         nouveauEmploye.add("prenom" ,emp.getPrenom());
         nouveauEmploye.add("telephone",emp.getTelephone());
-        //Ajout de nouveau Employe 
+        //Ajout de nouveau Employe
         nouveauTableauEmployesBuilder.add(nouveauEmploye);
         //Préparation de la tableau d'objets Employe
         JsonArray nouveauTableauEmployes = nouveauTableauEmployesBuilder.build();
@@ -52,12 +52,12 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         nouveauObjetInstitionBuilder.add("employes", nouveauTableauEmployes);
         //Préparation de l'objet Institution
         JsonObject nouveauObjetInstituion = nouveauObjetInstitionBuilder.build();
-        
+
         //Ecriture des données
         //Création de Output Stream
         OutputStream out = null;
         try {
-            out = new FileOutputStream("FST.json");
+            out = new FileOutputStream(nomInstitution + ".json");
         } catch (FileNotFoundException e) {
             System.out.println("Fichiers Inexistants");
             System.out.println(e.toString());
@@ -66,41 +66,41 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         JsonWriter ecrivainJson = Json.createWriter(out);
         ecrivainJson.writeObject(nouveauObjetInstituion);
         ecrivainJson.close();
-        
-        return "\nNom :" + emp.getNom() + 
-        "\nPrenom :" + emp.getPrenom() + 
-        "\nCin :" + emp.getCin() + 
+
+        return "\nNom :" + emp.getNom() +
+        "\nPrenom :" + emp.getPrenom() +
+        "\nCin :" + emp.getCin() +
         "\nTélèphone :" + emp.getTelephone();
-        
+
     }
-    public void delete(int cin) throws RemoteException{
-        
+    public void delete(int cin, String nomInstitution) throws RemoteException{
+
         //Creation un Input Stream
         InputStream in = null;
-        
+
         try{
-            in = new FileInputStream("FST.json");
+            in = new FileInputStream(nomInstitution+".json");
         }
         catch(FileNotFoundException e){
             System.out.println("Fichiers Inexistants");
             e.printStackTrace();
         }
-        //lecture de fichier JSON 
+        //lecture de fichier JSON
         JsonReader lecteurJson = Json.createReader(in);
         //lecture de l'objet Institution
-        JsonObject lecteurObjetInstituion  = lecteurJson.readObject(); 
+        JsonObject lecteurObjetInstituion  = lecteurJson.readObject();
         //Lecture du tableau d'objet Employes
         JsonArray lecteurTableauEmployes = lecteurObjetInstituion.getJsonArray("employes");
         lecteurJson.close();
-        try 
+        try
         {
             in.close();
-        } 
+        }
         catch (IOException e) {
             System.out.println("le fichier est ouvert en mode lecture");
             e.printStackTrace();
         }
-        
+
         JsonArrayBuilder nouveauTableauEmployesBuilder = Json.createArrayBuilder();
         //
         for(int i=0 ; i<lecteurTableauEmployes.size(); i++)
@@ -108,22 +108,22 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
             if(!Objects.equals(lecteurTableauEmployes.getJsonObject(i).getInt("cin"),cin)){
                 nouveauTableauEmployesBuilder.add(lecteurTableauEmployes.getJsonObject(i));
             }
-        }    
+        }
         //Préparation de la tableau d'objets Employe
         JsonArray nouveauTableauEmployes = nouveauTableauEmployesBuilder.build();
         //Création de l'objet globale de document Json
         JsonObjectBuilder nouveauObjetInstitionBuilder = Json.createObjectBuilder();
         //Ajout des données à l'objet Institution
-        nouveauObjetInstitionBuilder.add("institutionName", "FST");
+        nouveauObjetInstitionBuilder.add("institutionName", nomInstitution);
         nouveauObjetInstitionBuilder.add("employes", nouveauTableauEmployes);
         //Préparation de l'objet Institution
         JsonObject nouveauObjetInstituion = nouveauObjetInstitionBuilder.build();
-        
+
         //Création de Output Stream
         OutputStream out=null;
-        try 
+        try
         {
-            out = new FileOutputStream("FST.json");
+            out = new FileOutputStream(nomInstitution+".json");
         }
         catch (FileNotFoundException e)
         {
@@ -133,29 +133,29 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         JsonWriter ecrivainJson = Json.createWriter(out);
         ecrivainJson.writeObject(nouveauObjetInstituion);
         ecrivainJson.close();
-        
+
     }
-    public void update(Employe emp) throws RemoteException{
+    public void update(Employe emp, String nomInstitution) throws RemoteException{
         //Création un Input Stream
         InputStream in=null;
-        
+
         try{
-            in = new FileInputStream("FST.json");
+            in = new FileInputStream(nomInstitution+".json");
         }
         catch(FileNotFoundException e){
             System.out.println("Fichiers Inexistants");
             e.printStackTrace();
         }
-        //lecture de fichier JSON 
+        //lecture de fichier JSON
         JsonReader lecteurJson = Json.createReader(in);
         //lecture de l'objet Institution
-        JsonObject lecteurObjetInstituion  = lecteurJson.readObject(); 
+        JsonObject lecteurObjetInstituion  = lecteurJson.readObject();
         //Lecture du tableau d'objet Employes
         JsonArray lecteurTableauEmployes = lecteurObjetInstituion.getJsonArray("employes");
         lecteurJson.close();
         try {
             in.close();
-        } 
+        }
         catch (IOException e) {
             System.out.println("le fichier est ouvert en mode lecture");
             e.printStackTrace();
@@ -169,21 +169,21 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
             }
         }
         nouveauTableauEmployesBuilder.add(Json.createObjectBuilder());
-        
+
         //Préparation de la tableau d'objets Employe
         JsonArray nouveauTableauEmployes = nouveauTableauEmployesBuilder.build();
         //Création de l'objet globale de document Json
         JsonObjectBuilder nouveauObjetInstitionBuilder = Json.createObjectBuilder();
         //Ajout des données à l'objet Institution
-        nouveauObjetInstitionBuilder.add("institutionName","FST");
+        nouveauObjetInstitionBuilder.add("institutionName",nomInstitution);
         nouveauObjetInstitionBuilder.add("employes",nouveauTableauEmployes);
         //Préparation de l'objet Institution
         JsonObject nouveauObjetInstition = nouveauObjetInstitionBuilder.build();
         //Creation d'un Output Stream
         OutputStream out=null;
-        
+
         try {
-            out = new FileOutputStream("FST.json");
+            out = new FileOutputStream(nomInstitution+".json");
         }
         catch (FileNotFoundException e) {
             System.out.println("Fichiers Inexistants");
@@ -191,33 +191,33 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         }
         JsonWriter ecrivainJson = Json.createWriter(out);
         ecrivainJson.writeObject(nouveauObjetInstition);
-        ecrivainJson.close();   
-        
+        ecrivainJson.close();
+
     }
-    public Employe search(int cin) throws RemoteException{
-        
+    public Employe search(int cin, String nomInstitution) throws RemoteException{
+
         //Creation d'un Input Stream
         InputStream in = null;
         Employe emp = null;
-        
+
         try{
-            in = new FileInputStream("FST.json");
+            in = new FileInputStream(nomInstitution+".json");
         }
         catch(FileNotFoundException e){
             System.out.println("le fichier est ouvert en mode lecture");
             e.printStackTrace();
         }
-        //lecture de fichier JSON 
+        //lecture de fichier JSON
         JsonReader lecteurJson = Json.createReader(in);
         //lecture de l'objet Institution
-        JsonObject lecteurObjetInstituion  = lecteurJson.readObject(); 
+        JsonObject lecteurObjetInstituion  = lecteurJson.readObject();
         //Lecture du tableau d'objet Employes
         JsonArray lecteurTableauEmployes = lecteurObjetInstituion.getJsonArray("employes");
         lecteurJson.close();
-        try 
+        try
         {
             in.close();
-        } 
+        }
         catch (IOException e) {
             System.out.println("le fichier est ouvert en mode lecture");
             e.printStackTrace();
@@ -229,7 +229,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
                 String searchNom = lecteurTableauEmployes.getJsonObject(i).getString("nom");
                 String searchPrenom = lecteurTableauEmployes.getJsonObject(i).getString("prenom");
                 int searchTel = lecteurTableauEmployes.getJsonObject(i).getInt("telephone");
-                emp = new Employe(searchNom, searchPrenom, searchCin, searchTel);        
+                emp = new Employe(searchNom, searchPrenom, searchCin, searchTel);
             }
         }
         return emp;
