@@ -53,7 +53,7 @@ public class Client {
                 break;
                 case 2:
                     //Saisie de CIN de l'employe à supprimer
-                    System.out.println("Tapez le nom de l'employe à Supprimer.\n"+"CIN de l'employé à supprimer:");
+                    System.out.println("Tapez le nom de l'employe à Supprimer. Exemple : 11111111\n"+"CIN de l'employé à supprimer:");
                     Scanner cinEmpSupprimerScanner = new Scanner(System.in);
                     int cinEmpSupprimer = cinEmpSupprimerScanner.nextInt();
                     System.out.println("Tapez le nom d'institution. Exemple FST");
@@ -111,7 +111,7 @@ public class Client {
                 break;
                 case 4:
                     //Saisie donnée Employe à cherecher
-                    System.out.println("Tapez le CIN de l'employé à rechercher.\n"+"CIN de l'employé à mettre à jour:");
+                    System.out.println("Tapez le CIN de l'employé à rechercher. Exemple 44444444\n"+"CIN de l'employé à mettre à jour:");
                     Scanner cinEmpSearchScanner = new Scanner(System.in);
                     int cinEmpSearch = cinEmpSearchScanner.nextInt();
                     System.out.println("Tapez le nom d'institution. Exemple FST");
