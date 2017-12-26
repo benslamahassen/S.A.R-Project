@@ -1,6 +1,11 @@
 # S.A.R-Project
 Java RMI Academic Project.
+Dependances : Apache
 ## Using The Project
+Apache
+```
+sudo apt install apache2
+```
 CodeBase
 ```
 //Aller dans le repertoire CodeBase//
@@ -21,7 +26,7 @@ Serveur
 //Complier les fichiers .java//
     user$ javac -classpath ../lib/javax.json.jar:./ *.java
 //Lancer le serveur dynamique//
-    user$ java -Djava.security.policy=server.security.policy -Djava.rmi.server.codebase=http://localhost/CodeBase/  -                   classpath ../lib/javax.json.jar:./ ServeurDynamique
+    user$ java -Djava.security.policy=server.security.policy -Djava.rmi.server.codebase=http://localhost/CodeBase/  -classpath ../lib/javax.json.jar:./ ServeurDynamique
 ```
 Client
 ```
@@ -30,5 +35,5 @@ Client
 //Compiler les fichiers .java//
     user$ javac -classpath ../lib/javax.json.jar:./ *.java
 //Lancer le client dynamique//
-    user$ java -Djava.security.policy=client.security.policy -Djava.rmi.server.codebase=http://localhost/CodeBase/  -                   classpath ../lib/javax.json.jar:./ ClientDynamique
+    user$ java -Djava.security.policy=client.security.policy -Djava.rmi.server.codebase=http://localhost/CodeBase/  -classpath ../lib/javax.json.jar:./ ClientDynamique
 ```
