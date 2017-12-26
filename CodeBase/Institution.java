@@ -10,14 +10,14 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         super();
     };
     
-    public String add(Employe emp) throws RemoteException{
+    public String add(Employe emp, String nomInstitution) throws RemoteException{
         //Traitement des Fichiers
         
         //Lecture des données
         //Création de Input Stream
         InputStream in = null;
         try {
-            in = new FileInputStream("FST.json");
+            in = new FileInputStream(nomInstitution + ".json");
         } catch (FileNotFoundException e) {
             System.out.println("Fichiers Inexistants");
             System.out.println(e.toString());
@@ -48,7 +48,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         //Création de l'objet globale de document Json
         JsonObjectBuilder nouveauObjetInstitionBuilder = Json.createObjectBuilder();
         //Ajout des données à l'objet Institution
-        nouveauObjetInstitionBuilder.add("institutionName", "FST");
+        nouveauObjetInstitionBuilder.add("institutionName", nomInstitution);
         nouveauObjetInstitionBuilder.add("employes", nouveauTableauEmployes);
         //Préparation de l'objet Institution
         JsonObject nouveauObjetInstituion = nouveauObjetInstitionBuilder.build();

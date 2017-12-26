@@ -1,11 +1,11 @@
 import java.rmi.*;
 
 public interface InstitutionInterface extends Remote {
-    String add(Employe emp) throws RemoteException;
+    String add(Employe emp, String nomInstitution) throws RemoteException;
 
-    void delete(int cin) throws RemoteException;
+    void delete(int cin, String nomInstitution) throws RemoteException;
 
-    void update(Employe emp) throws RemoteException;
+    void update(Employe emp, String nomInstitution) throws RemoteException;
 
-    Employe search(int cin) throws RemoteException;
+    Employe search(int cin, String nomInstitution) throws RemoteException;
 }
