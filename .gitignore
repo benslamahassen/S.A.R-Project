@@ -1,3 +1,6 @@
+# JSon Files
+*.json
+
 # Compiled class file
 *.class
 

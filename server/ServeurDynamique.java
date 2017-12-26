@@ -15,7 +15,7 @@ public class ServeurDynamique {
             Properties p = System.getProperties();
             String url = p.getProperty("java.rmi.server.codebase");
             Class ClasseFabrique = RMIClassLoader.loadClass(url, "Fabrique");
-            registry.rebind("Fabrique", (Remote) ClasseFabrique.newInstance());
+            registry.rebind("Fabrique", (Remote)ClasseFabrique.newInstance());
             System.out.println("L'objet Fabrique lié dans le RMIregistry");
             System.out.println("Attente des invocations des clients");
         } catch (Exception e) {
