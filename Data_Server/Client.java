@@ -1,9 +1,12 @@
 import java.rmi.registry.*;
+import java.rmi.*;
 
 public class Client {
 
-    public static void main(String[] args) {
+    public Client() {
         try {
+            if (System.getSecurityManager() == null)
+                System.setSecurityManager(new RMISecurityManager());
             //Interroger de RMIregistry
             Registry reg = LocateRegistry.getRegistry("localhost", 1099);
             //Trouver une réference vers la Fabrique
