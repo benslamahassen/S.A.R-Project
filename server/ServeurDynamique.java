@@ -9,8 +9,9 @@ public class ServeurDynamique {
         try {
             if(System.getSecurityManager() == null)
             System.setSecurityManager(new RMISecurityManager());
+            //Construction de RMI registry
             Registry registry = LocateRegistry.createRegistry(1099);
-            System.out.println("Serveur : Construction de l'impl");
+            System.out.println("Construction de l'implementation");
             Properties p = System.getProperties();
             String url = p.getProperty("java.rmi.server.codebase");
             Class ClasseFabrique = RMIClassLoader.loadClass(url, "Fabrique");
