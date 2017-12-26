@@ -1,6 +1,14 @@
 # S.A.R-Project
 Java RMI Academic Project.
-## Using The Project
+
+##Requirement 
+
+###Javax JSON API  [télécharger](https://github.com/sourcegraph/java-artifacts/tree/master/javax/json/javax.json-api/1.0)
+
+nécessaire pour la manipulation des fichiers JSON 
+
+
+## Utiliser le projet
 Serveur
 ```
 //Aller dans le repertoire server//
