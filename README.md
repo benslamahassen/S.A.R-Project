@@ -1,5 +1,7 @@
 # S.A.R-Project
+
 Java RMI Academic Project.
+
 Dependances : Apache
 ## Using The Project
 Apache
@@ -8,32 +10,34 @@ sudo apt install apache2
 ```
 CodeBase
 ```
-//Aller dans le repertoire CodeBase//
+-Aller dans le repertoire CodeBase:
     user$ cd CodeBase
-//Complier les fichiers .java//
+-Complier les fichiers .java:
     user$ javac -classpath ../lib/javax.json.jar:./ *.java
-//Générer les souches client et serveur Institution_Stub.class et Institution_Skel.class//
+-Générer les souches client et serveur Institution_Stub.class et Institution_Skel.class:
     user$ rmic -v1.1 Institution
-//Générer les souches//
+-Générer les souches:
     user$ rmic -v1.1 Fabrique
-//Copier le Dossier CodeBase vers /var/www/html pour étre accessible depuis http avec apache
+-Retour à la racine de projet:
+    user$ cd ..
+-Copier le Dossier CodeBase vers /var/www/html pour étre accessible depuis http avec apache:
     user$ cp -r CodeBase/ /var/www/html
 ```
 Serveur
 ```
-//Aller dans le repertoire Server//
+-Aller dans le repertoire Server:
     user$ cd Server
-//Complier les fichiers .java//
+-Complier les fichiers .java:
     user$ javac -classpath ../lib/javax.json.jar:./ *.java
-//Lancer le serveur dynamique//
+-Lancer le serveur dynamique:
     user$ java -Djava.security.policy=server.security.policy -Djava.rmi.server.codebase=http://localhost/CodeBase/  -classpath ../lib/javax.json.jar:./ ServeurDynamique
 ```
 Client
 ```
-//Aller dans le répertoire du client//
+-Aller dans le répertoire du client:
     user$ cd ../client
-//Compiler les fichiers .java//
+-Compiler les fichiers .java:
     user$ javac -classpath ../lib/javax.json.jar:./ *.java
-//Lancer le client dynamique//
+-Lancer le client dynamique:
     user$ java -Djava.security.policy=client.security.policy -Djava.rmi.server.codebase=http://localhost/CodeBase/  -classpath ../lib/javax.json.jar:./ ClientDynamique
 ```
