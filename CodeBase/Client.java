@@ -48,7 +48,6 @@ public class Client {
                         Employe emp = new Employe(nomEmp, prenomEmp , cinEmp , telephoneEmp);
                         String resultat = institution.add(emp,nomInstitution);
                         System.out.println("Succés de l'ajout.\n"+resultat);
-                        
                     } catch (Exception e) {
                         System.out.println("Erreur d'acces à l'objet distant.");
                         System.out.println(e.toString());
@@ -72,7 +71,8 @@ public class Client {
                         //Création d'institution
                         InstitutionInterface institution = (InstitutionInterface) fab.createInstitution();
                         //Création Employe
-                        institution.delete(cinEmpSupprimer,nomInstitutionDelete);                    
+                        institution.delete(cinEmpSupprimer,nomInstitutionDelete);
+                        System.out.println("Succées de la suppression.");                   
                     } catch (Exception e) {
                         System.out.println("Erreur d'acces à l'objet distant.");
                         System.out.println(e.toString());
@@ -106,7 +106,8 @@ public class Client {
                         InstitutionInterface institution = (InstitutionInterface) fab.createInstitution();
                         //Création Employe
                         Employe empUpdate = new Employe(nomEmpUpdate, prenomEmpUpdate , cinEmpUpdate , telephoneEmpUpdate);
-                        institution.update(empUpdate,nomInstitutionUpdate);                    
+                        institution.update(empUpdate,nomInstitutionUpdate);
+                        System.out.println("Succées de la mise à jour.");
                     } catch (Exception e) {
                         System.out.println("Erreur d'acces à l'objet distant.");
                         System.out.println(e.toString());
@@ -114,7 +115,7 @@ public class Client {
                 break;
                 case 4:
                     //Saisie donnée Employe à cherecher
-                    System.out.println("Tapez le CIN de l'employé à rechercher. Exemple 44444444\n"+"CIN de l'employé à mettre à jour:");
+                    System.out.println("Tapez le CIN de l'employé à rechercher. Exemple 44444444\n"+"CIN de l'employé à chercher:");
                     Scanner cinEmpSearchScanner = new Scanner(System.in);
                     int cinEmpSearch = cinEmpSearchScanner.nextInt();
                     System.out.println("Tapez le nom d'institution. Exemple FST");

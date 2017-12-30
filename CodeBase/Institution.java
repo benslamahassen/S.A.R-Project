@@ -71,7 +71,6 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         "\nPrenom :" + emp.getPrenom() +
         "\nCin :" + emp.getCin() +
         "\nTélèphone :" + emp.getTelephone();
-
     }
     //Méthode delete() prend en paramétre le cin, comme identifiant de l'employe, et le nom de l'institution
     public void delete(int cin, String nomInstitution) throws RemoteException{
@@ -201,7 +200,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
 
         //Creation d'un Input Stream
         InputStream in = null;
-        Employe emp = null;
+        Employe employe = null;
 
         try{
             in = new FileInputStream(nomInstitution+".json");
