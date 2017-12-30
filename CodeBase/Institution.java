@@ -167,10 +167,17 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         {
             if(lecteurTableauEmployes.getJsonObject(i).getInt("cin") != emp.getCin()){
                 nouveauTableauEmployesBuilder.add(lecteurTableauEmployes.getJsonObject(i));
+            }else{
+                //Mise à jour de l'Employe récu du Client
+                JsonObjectBuilder nouveauEmploye = Json.createObjectBuilder();
+                nouveauEmploye.add("cin",emp.getCin());
+                nouveauEmploye.add("nom",emp.getNom());
+                nouveauEmploye.add("prenom" ,emp.getPrenom());
+                nouveauEmploye.add("telephone",emp.getTelephone());
+                //Ajout de nouveau Employe
+                nouveauTableauEmployesBuilder.add(nouveauEmploye); 
             }
-        }
-        nouveauTableauEmployesBuilder.add(Json.createObjectBuilder());
-
+        }     
         //Préparation de la tableau d'objets Employe
         JsonArray nouveauTableauEmployes = nouveauTableauEmployesBuilder.build();
         //Création de l'objet globale de document Json

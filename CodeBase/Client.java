@@ -80,15 +80,15 @@ public class Client {
                 break;
                 case 3:
                     //Saisie donnée Employe à mettre à jour
+                    System.out.println("Tapez le CIN de l'employé à mettre à jour.\n"+"CIN de l'employé à mettre à jour:");
+                    Scanner cinEmpUpdateScanner = new Scanner(System.in);
+                    int cinEmpUpdate = cinEmpUpdateScanner.nextInt();
                     System.out.println("Tapez le nom de l'employé à mettre à jour.\n"+"Nom de l'employé à mettre à jour:");
                     Scanner nomEmpUpdateScanner = new Scanner(System.in);
                     String nomEmpUpdate = nomEmpUpdateScanner.next();
                     System.out.println("Tapez le prenom de l'employé à mettre à jour.\n"+"Prenom de l'employé à mettre à jour:");
                     Scanner prenomEmpUpdateScanner = new Scanner(System.in);
                     String prenomEmpUpdate = prenomEmpUpdateScanner.next();
-                    System.out.println("Tapez le CIN de l'employé à mettre à jour.\n"+"CIN de l'employé à mettre à jour:");
-                    Scanner cinEmpUpdateScanner = new Scanner(System.in);
-                    int cinEmpUpdate = cinEmpUpdateScanner.nextInt();
                     System.out.println("Tapez le télèphone de l'employé à mettre à jour.\n"+"Télèphone de l'employé à mettre à jour:");
                     Scanner telephoneEmpUpdateScanner = new Scanner(System.in);
                     int telephoneEmpUpdate = telephoneEmpUpdateScanner.nextInt();
@@ -107,7 +107,7 @@ public class Client {
                         //Création Employe
                         Employe empUpdate = new Employe(nomEmpUpdate, prenomEmpUpdate , cinEmpUpdate , telephoneEmpUpdate);
                         institution.update(empUpdate,nomInstitutionUpdate);
-                        System.out.println("Succées de la mise à jour.");
+                        System.out.println("L'employe"+ nomEmpUpdate+" "+prenomEmpUpdate+" est modifié.");
                     } catch (Exception e) {
                         System.out.println("Erreur d'acces à l'objet distant.");
                         System.out.println(e.toString());
