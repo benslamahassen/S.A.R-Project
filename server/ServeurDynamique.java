@@ -12,8 +12,10 @@ public class ServeurDynamique {
             //Construction de RMI registry
             Registry registry = LocateRegistry.createRegistry(1099);
             System.out.println("Construction de l'implementation");
+            //Récupération de l'url contenant les fichiers du projet
             Properties p = System.getProperties();
             String url = p.getProperty("java.rmi.server.codebase");
+            //Récuperation et Exposition de la classe Fabrique
             Class ClasseFabrique = RMIClassLoader.loadClass(url, "Fabrique");
             registry.rebind("Fabrique", (Remote)ClasseFabrique.newInstance());
             System.out.println("L'objet Fabrique lié dans le RMIregistry");

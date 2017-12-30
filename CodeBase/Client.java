@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Client {
     
     public Client() {
+        //Boucle Infinie pour l'affichage contenue de la Menu
         while (true) {
+            //Affichage de menu
             System.out.println("Tapez:\n"
             +"   "+"1: pour ajouter un employé.\n"
             +"   "+"2: pour supprimer un employé.\n"
@@ -14,6 +16,7 @@ public class Client {
             +"   "+"5: pour quitter.");
             Scanner choixMenuScanner = new Scanner(System.in);
             int choixMenu = choixMenuScanner.nextInt();
+            //Lire le choix de l'utilisateur
             switch (choixMenu){
                 case 1:
                     //Saisie donnée Employe à ajouter

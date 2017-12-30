@@ -9,7 +9,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
     public Institution() throws RemoteException{
         super();
     };
-
+    //Méthode add() prend en paramétre l'objet Employe à ajouter et le nom de l'institution
     public String add(Employe emp, String nomInstitution) throws RemoteException{
         //Traitement des Fichiers
 
@@ -73,6 +73,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         "\nTélèphone :" + emp.getTelephone();
 
     }
+    //Méthode delete() prend en paramétre le cin, comme identifiant de l'employe, et le nom de l'institution
     public void delete(int cin, String nomInstitution) throws RemoteException{
 
         //Creation un Input Stream
@@ -135,6 +136,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         ecrivainJson.close();
 
     }
+    //Méthode update() prend en paramétre l'objet Employe à mettre à jour et le nom de l'institution
     public void update(Employe emp, String nomInstitution) throws RemoteException{
         //Création un Input Stream
         InputStream in=null;
@@ -194,6 +196,7 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
         ecrivainJson.close();
 
     }
+    //Méthode search() prend en paramétre le cin, comme identifiant de l'employe, et le nom de l'institution 
     public Employe search(int cin, String nomInstitution) throws RemoteException{
 
         //Creation d'un Input Stream
@@ -229,9 +232,9 @@ public class Institution extends UnicastRemoteObject implements InstitutionInter
                 String searchNom = lecteurTableauEmployes.getJsonObject(i).getString("nom");
                 String searchPrenom = lecteurTableauEmployes.getJsonObject(i).getString("prenom");
                 int searchTel = lecteurTableauEmployes.getJsonObject(i).getInt("telephone");
-                emp = new Employe(searchNom, searchPrenom, searchCin, searchTel);
+                employe = new Employe(searchNom, searchPrenom, searchCin, searchTel);
             }
         }
-        return emp;
+        return employe;
     }
 }
