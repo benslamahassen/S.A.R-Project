@@ -107,7 +107,7 @@ public class Client {
                         //Création Employe
                         Employe empUpdate = new Employe(nomEmpUpdate, prenomEmpUpdate , cinEmpUpdate , telephoneEmpUpdate);
                         institution.update(empUpdate,nomInstitutionUpdate);
-                        System.out.println("L'employe"+ nomEmpUpdate+" "+prenomEmpUpdate+" est modifié.");
+                        System.out.println("L'employe "+ nomEmpUpdate+" "+prenomEmpUpdate+" est modifié.");
                     } catch (Exception e) {
                         System.out.println("Erreur d'acces à l'objet distant.");
                         System.out.println(e.toString());
